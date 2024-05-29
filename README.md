@@ -11,13 +11,15 @@
 
 Yêu cầu có : XAMPP và Composer
 
-B1: clone repo vào folder `htdocs` của folder cài XAMPP
-B2: mở terminal ở thư mục vừa clone về và chạy `composer install`
-B3: chạy lệnh `npm install`
-B3: tạo key bằng lệnh `php artisan key:generate`
-B4: chạy lệnh `php artisan serve` để start
-B5: chạy lệnh `npm run dev` để start UI
+B1: clone repo vào folder `htdocs` của folder cài XAMPP<br>
+B2: mở terminal ở thư mục vừa clone về và chạy `composer install`<br>
+B3: chạy lệnh `npm install`<br>
+B3: tạo key bằng lệnh `php artisan key:generate`<br>
+B4: chạy lệnh `php artisan serve` để start<br>
+B5: chạy lệnh `npm run dev` để start UI<br>
 B6: (tùy chọn) chạy lệnh `php artisan tinker` để debug,...
+
+<hr/>
 
 ### cài extension và setup VS Code để format code
 
