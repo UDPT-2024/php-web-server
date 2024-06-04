@@ -15,9 +15,10 @@ B1: clone repo vào folder `htdocs` của folder cài XAMPP<br>
 B2: mở terminal ở thư mục vừa clone về và chạy `composer install`<br>
 B3: chạy lệnh `npm install`<br>
 B3: tạo key bằng lệnh `php artisan key:generate`<br>
-B4: chạy lệnh `php artisan serve` để start<br>
-B5: chạy lệnh `npm run dev` để start UI<br>
-B6: (tùy chọn) chạy lệnh `php artisan tinker` để debug,...
+B4: chạy lệnh `php artisan migrate` <br>
+B5: chạy lệnh `php artisan serve` để start<br>
+B6: chạy lệnh `npm run dev` để start UI<br>
+B7: (tùy chọn) chạy lệnh `php artisan tinker` để debug,...
 
 <hr/>
 
