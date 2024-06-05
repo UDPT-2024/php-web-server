@@ -394,7 +394,7 @@ export default withMT({
                 }
             })
         }),
-        forms
+        // forms
     ]
 
 });

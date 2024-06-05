@@ -36,5 +36,25 @@ declare module "@material-tailwind/react" {
         placeholder?: unknown;
     }
 
+    export interface IconButtonProps extends EventCapture {
+        placeholder?: unknown;
+    }
+
+    export interface AvatarProps extends EventCapture {
+        placeholder?: unknown;
+    }
+
+    export interface MenuProps extends EventCapture {
+        placeholder?: unknown;
+    }
+
+    export interface NavbarProps extends EventCapture {
+        placeholder?: unknown;
+    }
+
+    export interface CarouselProps extends EventCapture {
+        placeholder?: unknown;
+    }
+
     // more...
 }
