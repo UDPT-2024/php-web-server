@@ -1,5 +1,16 @@
 import { Link, Head } from "@inertiajs/react";
-import { PageProps } from "@/types";
+import { PageProps } from "src/types";
+import {
+    Card,
+    CardHeader,
+    CardBody,
+    CardFooter,
+    Typography,
+    Button,
+} from "@material-tailwind/react";
+
+import { useQuery } from "@tanstack/react-query";
+import authApi from "src/apis/auth.api";
 
 export default function Welcome({
     auth,
@@ -16,6 +27,15 @@ export default function Welcome({
             ?.classList.add("!flex-row");
         document.getElementById("background")?.classList.add("!hidden");
     };
+
+    const testQuery = useQuery({
+        queryKey: ["test"],
+        queryFn: () => authApi.test(),
+    });
+
+    const test = testQuery.data?.data;
+
+    console.log(test);
 
     return (
         <>
@@ -354,6 +374,35 @@ export default function Welcome({
                                     </div>
                                 </div>
                             </div>
+                            <Card className="mt-6 w-96">
+                                <CardHeader
+                                    color="blue-gray"
+                                    className="relative h-56"
+                                >
+                                    <img
+                                        src="https://images.unsplash.com/photo-1540553016722-983e48a2cd10?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=80"
+                                        alt="card-image"
+                                    />
+                                </CardHeader>
+                                <CardBody>
+                                    <Typography
+                                        variant="h5"
+                                        color="blue-gray"
+                                        className="mb-2"
+                                    >
+                                        UI/UX Review Check
+                                    </Typography>
+                                    <Typography>
+                                        The place is close to Barceloneta Beach
+                                        and bus stop just 2 min by walk and near
+                                        to &quot;Naviglio&quot; where you can
+                                        enjoy the main night life in Barcelona.
+                                    </Typography>
+                                </CardBody>
+                                <CardFooter className="pt-0">
+                                    <Button>Read More</Button>
+                                </CardFooter>
+                            </Card>
                         </main>
 
                         <footer className="py-16 text-center text-sm text-black dark:text-white/70">
