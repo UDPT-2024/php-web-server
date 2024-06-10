@@ -18,6 +18,7 @@ export default defineConfig({
     resolve: {
         alias: {
             src: path.resolve(__dirname, './resources/js'),
+            react: path.resolve('./node_modules/react'),
         }
     }
 });

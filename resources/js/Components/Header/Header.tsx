@@ -108,7 +108,7 @@ function Header() {
                                     Đăng Ký
                                 </Button>
                             </Link>
-                            <Link href="/">
+                            <Link href={route("login")}>
                                 <Button
                                     variant="gradient"
                                     color="orange"

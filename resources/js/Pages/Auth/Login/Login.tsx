@@ -20,10 +20,10 @@ import { ErrorResponse } from "src/types/utils.type";
 import { Link } from "@inertiajs/react";
 
 interface Props {
-    setIsLoginTab: React.Dispatch<React.SetStateAction<boolean>>;
+    setActiveTab: React.Dispatch<React.SetStateAction<string>>;
 }
 
-const Login = ({ setIsLoginTab }: Props) => {
+const Login = () => {
     const queryClient = useQueryClient();
     // const navigate = useNavigate();
     const dispatch = useDispatch();
@@ -62,14 +62,14 @@ const Login = ({ setIsLoginTab }: Props) => {
 
         onSubmit: async (data) => {
             await signInAccountMutation.mutate(data, {
-                onSuccess: () => {
+                onSuccess: (data) => {
                     // Khi login thành công thì sẽ gọi api get profile
                     // Query key của hàm invalidateQueries match với query key của useQuery trên => Gọi API trên
                     // queryClient.invalidateQueries({
                     //     queryKey: ["profile"],
                     // });
 
-                    console.log("Thành công");
+                    console.log("Thành công" + data.data);
                 },
                 onError: (error) => {
                     if (isAxiosBadRequestError<ErrorResponse>(error)) {
@@ -106,12 +106,9 @@ const Login = ({ setIsLoginTab }: Props) => {
                     WELLCOME
                 </Typography>
                 <span className="text-[#0c2964]">
-                    Chưa có tài khoản?{" "}
-                    <button
-                        className="text-[#3873f2]"
-                        onClick={() => setIsLoginTab(false)}
-                    >
-                        Tạo tài khoản
+                    Đăng Nhập Vào{" "}
+                    <button className="text-orange-400">
+                        The Music Concert
                     </button>
                 </span>
             </CardHeader>
@@ -149,7 +146,7 @@ const Login = ({ setIsLoginTab }: Props) => {
                 <div className="flex justify-end mt-2">
                     <Link
                         href="/forgot-password"
-                        className="text-[13px] text-[#3873f2]"
+                        className="text-[13px] text-orange-400"
                     >
                         Quên mật khẩu ?
                     </Link>
@@ -172,7 +169,7 @@ const Login = ({ setIsLoginTab }: Props) => {
                     form="form-login"
                     type="submit"
                     variant="gradient"
-                    color="blue"
+                    color="orange"
                     className="text-lg leading-5"
                     fullWidth
                 >

@@ -14,14 +14,14 @@ import { encodeBase64, isAxiosInternalServerError } from "src/utils/utils";
 import { toast } from "react-toastify";
 import { useState } from "react";
 import CustomInput from "src/Components/CustomInput";
-import DatePicker from "../DatePicker";
+import DatePicker from "src/Components/DatePicker";
 
 interface Props {
-    setIsLoginTab: React.Dispatch<React.SetStateAction<boolean>>;
+    setActiveTab: React.Dispatch<React.SetStateAction<string>>;
 }
 
-export const Register = ({ setIsLoginTab }: Props) => {
-    const navigate = useNavigate();
+export const Register = () => {
+    // const navigate = useNavigate();
     const [date, setDate] = useState<string>("");
     const [openPopoverFirstName, setOpenPopoverFirstName] =
         useState<boolean>(false);
@@ -35,32 +35,32 @@ export const Register = ({ setIsLoginTab }: Props) => {
     const [openPopoverPhone, setOpenPopoverPhone] = useState<boolean>(false);
     const [errorMsg, setErrorMsg] = useState<string>("");
 
-    const signupMutation = useMutation({
-        mutationFn: (
-            body: Pick<
-                User,
-                | "email"
-                | "password"
-                | "lastName"
-                | "firstName"
-                | "confirmPassword"
-                | "phone"
-            >
-        ) => authApi.signUp(body),
-        onSuccess: (res, vars) => {
-            toast.success(res.data.message, { autoClose: 2000 });
-            navigate("/confirm/" + encodeBase64(vars.email));
-            setIsLoginTab(true);
-        },
-        onError: (error) => {
-            if (isAxiosInternalServerError<ErrorResponse>(error)) {
-                const formError = error.response?.data;
-                if (formError) {
-                    toast.error(formError.message, { autoClose: 2000 });
-                }
-            }
-        },
-    });
+    // const signupMutation = useMutation({
+    //     mutationFn: (
+    //         body: Pick<
+    //             User,
+    //             | "email"
+    //             | "password"
+    //             | "lastName"
+    //             | "firstName"
+    //             | "confirmPassword"
+    //             | "phone"
+    //         >
+    //     ) => authApi.signUp(body),
+    //     onSuccess: (res, vars) => {
+    //         toast.success(res.data.message, { autoClose: 2000 });
+    //         // navigate("/confirm/" + encodeBase64(vars.email));
+    //         setIsLoginTab(true);
+    //     },
+    //     onError: (error) => {
+    //         if (isAxiosInternalServerError<ErrorResponse>(error)) {
+    //             const formError = error.response?.data;
+    //             if (formError) {
+    //                 toast.error(formError.message, { autoClose: 2000 });
+    //             }
+    //         }
+    //     },
+    // });
 
     const formik = useFormik({
         initialValues: {
@@ -83,7 +83,7 @@ export const Register = ({ setIsLoginTab }: Props) => {
         onSubmit: async (data) => {
             // eslint-disable-next-line @typescript-eslint/no-unused-vars
             const info = { ...data, birthday: date };
-            await signupMutation.mutate(info);
+            // await signupMutation.mutate(info);
         },
     });
 
@@ -143,6 +143,7 @@ export const Register = ({ setIsLoginTab }: Props) => {
                         name="lastName"
                     />
                     {/* Phone */}
+
                     <div className="grid grid-cols-2 gap-2">
                         <DatePicker
                             isForm={false}
@@ -195,7 +196,7 @@ export const Register = ({ setIsLoginTab }: Props) => {
                     type="submit"
                     form="form-register"
                     variant="gradient"
-                    color="blue"
+                    color="orange"
                     className="text-lg leading-5"
                     fullWidth
                 >

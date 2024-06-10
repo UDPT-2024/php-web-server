@@ -22,53 +22,58 @@ interface MainProps {
 export type LitepickerProps = MainProps &
     Omit<React.ComponentPropsWithoutRef<"input">, keyof MainProps>;
 
-function Litepicker(props: LitepickerProps) {
+function Litepicker({
+    options = {},
+    value = "",
+    onChange = () => {},
+    getRef = () => {},
+    ...computedProps
+}: LitepickerProps) {
     const initialRender = useRef(true);
     const litepickerRef = createRef<LitepickerElement>();
-    const tempValue = useRef(props.value);
+    const tempValue = useRef(value);
 
     useEffect(() => {
         if (litepickerRef.current) {
-            props.getRef(litepickerRef.current);
+            getRef(litepickerRef.current);
         }
 
         if (initialRender.current) {
-            setValue(props);
+            setValue({ options, value, onChange, getRef });
             if (litepickerRef.current !== null) {
-                init(litepickerRef.current, props);
+                init(litepickerRef.current, {
+                    options,
+                    value,
+                    onChange,
+                    getRef,
+                });
             }
             initialRender.current = false;
         } else {
-            if (
-                tempValue.current !== props.value &&
-                litepickerRef.current !== null
-            ) {
-                reInit(litepickerRef.current, props);
+            if (tempValue.current !== value && litepickerRef.current !== null) {
+                reInit(litepickerRef.current, {
+                    options,
+                    value,
+                    onChange,
+                    getRef,
+                });
             }
         }
 
-        tempValue.current = props.value;
-    }, [props.value]);
+        tempValue.current = value;
+    }, [value, options, onChange, getRef]);
 
-    const { options, value, onChange, getRef, ...computedProps } = props;
     return (
         <FormInput
             ref={litepickerRef}
             type="text"
-            value={props.value}
+            value={value}
             onChange={(e) => {
-                props.onChange(e.target.value);
+                onChange(e.target.value);
             }}
             {...computedProps}
         />
     );
 }
-
-Litepicker.defaultProps = {
-    options: {},
-    value: "",
-    onChange: () => {},
-    getRef: () => {},
-};
 
 export default Litepicker;

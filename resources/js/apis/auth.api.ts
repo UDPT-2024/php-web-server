@@ -5,7 +5,7 @@ import { SuccessResponse } from "src/types/utils.type";
 import { User } from "src/types/user.type";
 
 export const URL_SIGNUP = "authenticate/signup";
-export const URL_SIGNIN = "authenticate/signin";
+export const URL_LOGIN = "/identity-api/v1/auth/customer/sign-in";
 export const URL_REFRESH_TOKEN = "authenticate/refresh-token";
 const URL_CONFIRM = "authenticate/confirm";
 const URL_RESEND = "authenticate/resend";
@@ -18,7 +18,7 @@ const authApi = {
     //   return http.post<SuccessResponse>(URL_SIGNUP, body)
     // },
     logIn: (body: Pick<User, "email" | "password">) => {
-        return http.post<LoginResponse>(URL_SIGNIN, body);
+        return http.post<LoginResponse>(URL_LOGIN, body);
     },
     // confirmAccount: (body: { email: string; code: string }) => {
     //   return http.post<SuccessResponse>(URL_CONFIRM, body)

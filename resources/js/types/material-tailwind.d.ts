@@ -60,5 +60,17 @@ declare module "@material-tailwind/react" {
         placeholder?: unknown;
     }
 
+    export interface TabsHeaderProps extends EventCapture {
+        placeholder?: unknown;
+    }
+
+    export interface TabsBodyProps extends EventCapture {
+        placeholder?: unknown;
+    }
+
+    export interface TabProps extends EventCapture {
+        placeholder?: unknown;
+    }
+
     // more...
 }
