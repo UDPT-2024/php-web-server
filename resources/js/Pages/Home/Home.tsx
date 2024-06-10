@@ -2,6 +2,8 @@ import MainLayout from "src/Layouts/MainLayout";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { useQuery } from "@tanstack/react-query";
+import authApi from "src/apis/auth.api";
 
 const Home = () => {
     var settings = {
@@ -13,6 +15,15 @@ const Home = () => {
         autoplay: true,
         autoplaySpeed: 2000,
     };
+
+    const testQuery = useQuery({
+        queryKey: ["test"],
+        queryFn: () => authApi.test(),
+    });
+
+    const test = testQuery.data?.data;
+
+    console.log(test);
 
     return (
         <MainLayout>

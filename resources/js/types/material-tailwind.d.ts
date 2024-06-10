@@ -56,5 +56,9 @@ declare module "@material-tailwind/react" {
         placeholder?: unknown;
     }
 
+    export interface PopoverContentProps extends EventCapture {
+        placeholder?: unknown;
+    }
+
     // more...
 }

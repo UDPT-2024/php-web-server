@@ -2,6 +2,7 @@ import http from "src/utils/http";
 import { LoginResponse } from "src/types/auth.type";
 // import { User } from 'src/types/user.type'
 import { SuccessResponse } from "src/types/utils.type";
+import { User } from "src/types/user.type";
 
 export const URL_SIGNUP = "authenticate/signup";
 export const URL_SIGNIN = "authenticate/signin";
@@ -16,9 +17,9 @@ const authApi = {
     // signUp: (body: Pick<User, 'email' | 'password' | 'lastName' | 'firstName' | 'phone' | 'birthday'>) => {
     //   return http.post<SuccessResponse>(URL_SIGNUP, body)
     // },
-    // signIn: (body: Pick<User, 'email' | 'password'>) => {
-    //   return http.post<LoginResponse>(URL_SIGNIN, body)
-    // },
+    logIn: (body: Pick<User, "email" | "password">) => {
+        return http.post<LoginResponse>(URL_SIGNIN, body);
+    },
     // confirmAccount: (body: { email: string; code: string }) => {
     //   return http.post<SuccessResponse>(URL_CONFIRM, body)
     // },

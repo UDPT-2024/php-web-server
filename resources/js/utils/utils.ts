@@ -1,6 +1,6 @@
 import { type AxiosError, isAxiosError, HttpStatusCode } from "axios";
 import { ErrorResponse } from "src/types/utils.type";
-// import { AES, enc } from 'crypto-js'
+import { AES, enc } from "crypto-js";
 
 // Kiểm tra lỗi 400
 export function isAxiosBadRequestError<FormError>(
@@ -104,24 +104,24 @@ export function encodeBase64(inputString: string): string {
 
 // Hàm mã hóa dữ liệu
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-// export const encryptData = (data: any) => {
-//     const ciphertext = AES.encrypt(
-//         JSON.stringify(data),
-//         import.meta.env.VITE_SECRET_KEY as string
-//     );
-//     return ciphertext.toString();
-// };
+export const encryptData = (data: any) => {
+    const ciphertext = AES.encrypt(
+        JSON.stringify(data),
+        import.meta.env.VITE_SECRET_KEY as string
+    );
+    return ciphertext.toString();
+};
 
 // Hàm giải mã dữ liệu
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-// export const decryptData = (encryptedData: any) => {
-//     const bytes = AES.decrypt(
-//         encryptedData,
-//         import.meta.env.VITE_SECRET_KEY as string
-//     );
-//     const decryptedData = JSON.parse(bytes.toString(enc.Utf8));
-//     return decryptedData;
-// };
+export const decryptData = (encryptedData: any) => {
+    const bytes = AES.decrypt(
+        encryptedData,
+        import.meta.env.VITE_SECRET_KEY as string
+    );
+    const decryptedData = JSON.parse(bytes.toString(enc.Utf8));
+    return decryptedData;
+};
 
 // Hàm tính tuổi
 export const calAge = (birthday: string) => {
