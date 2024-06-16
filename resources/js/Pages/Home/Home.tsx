@@ -4,6 +4,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { useQuery } from "@tanstack/react-query";
 import authApi from "src/apis/auth.api";
+import { RatingPersonalConcert } from "../RatingPersonalConcert/RatingPersonalConcert";
 
 const Home = () => {
     var settings = {

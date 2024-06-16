@@ -1,7 +1,7 @@
 import { useState } from "react"
 import MainLayout from "src/Layouts/MainLayout"
 
-export function Componentse1() {
+export function RatingPersonalConcert() {
   const [rating, setRating] = useState(0)
   const [feedback, setFeedback] = useState('')
 
