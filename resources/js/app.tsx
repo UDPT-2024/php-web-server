@@ -1,5 +1,6 @@
 import "./bootstrap";
 import "../css/app.css";
+import "react-toastify/dist/ReactToastify.css";
 
 import { createRoot, hydrateRoot } from "react-dom/client";
 import { createInertiaApp } from "@inertiajs/react";
@@ -165,6 +166,22 @@ const theme = {
             },
             vertical: {
                 flexDirection: "flex-col",
+            },
+        },
+    },
+
+    breadcrumbs: {
+        styles: {
+            base: {
+                item: {
+                    initial: {
+                        hover: "hover:text-primary",
+                    },
+                },
+                separator: {
+                    color: "text-white",
+                    zIndex: "z-10",
+                },
             },
         },
     },

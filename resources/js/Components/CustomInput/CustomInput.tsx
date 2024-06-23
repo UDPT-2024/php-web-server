@@ -18,6 +18,7 @@ interface Props {
     name: string;
     type: string;
     readOnly?: boolean;
+    boxArrow?: string;
 }
 
 const CustomInput = ({
@@ -31,6 +32,7 @@ const CustomInput = ({
     id,
     type,
     readOnly,
+    boxArrow,
 }: Props) => {
     return (
         <Popover
@@ -91,7 +93,9 @@ const CustomInput = ({
                 }}
                 className={`${
                     formik.errors[name] ? "" : "hidden"
-                } z-[99999] max-w-[300px] rounded py-3 border-none arrow_box-right text-white text-[0.8rem] bg-[#be4b49]`}
+                } z-[99999] max-w-[300px] rounded py-3 border-none ${
+                    boxArrow ? boxArrow : "arrow_box-right"
+                } text-white text-[0.8rem] bg-[#be4b49]`}
             >
                 {errorMsg ? errorMsg : ""}
             </PopoverContent>

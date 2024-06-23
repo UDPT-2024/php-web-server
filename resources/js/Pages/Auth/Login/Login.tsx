@@ -69,26 +69,12 @@ const Login = () => {
                     //     queryKey: ["profile"],
                     // });
 
-                    console.log("Thành công" + data.data);
+                    console.log(data.data);
                 },
-                onError: (error) => {
-                    if (isAxiosBadRequestError<ErrorResponse>(error)) {
-                        // Kiểm tra lỗi có phải từ API trả về không
-                        const formError = error.response?.data;
-                        if (
-                            formError &&
-                            formError.errorKey === "EmailOrPasswordInValid"
-                        ) {
-                            toast.error(formError.message, { autoClose: 2000 });
-                        }
-                        if (
-                            formError &&
-                            formError.errorKey === "UnverifiedAccount"
-                        ) {
-                            // navigate("/confirm/" + encodeBase64(data.email));
-                            console.log("error" + error);
-                        }
-                    }
+                onError: () => {
+                    toast.error("Tài khoản hoặc mật khẩu không đúng", {
+                        autoClose: 2000,
+                    });
                 },
             });
         },

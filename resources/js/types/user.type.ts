@@ -14,17 +14,20 @@ export const userSchema = yup.object({
     password: yup
         .string()
         .required("Vui lòng nhập mật khẩu của bạn")
-        .min(
-            6,
-            "Nhập mật khẩu có ít nhất 6 ký tự, có thể bao gồm số, chữ cái và dấu câu (như ! và &)."
-        ),
-    confirmPassword: yup
+        .min(6, "Nhập mật khẩu có ít nhất 6 ký tự.")
+        .matches(/(?=.*[A-Z])/, "Mật khẩu phải có ít nhất một ký tự viết hoa.")
+        .matches(/(?=.*[0-9])/, "Mật khẩu phải có ít nhất một chữ số."),
+    passwordConfirmation: yup
         .string()
         .oneOf([yup.ref("password")], "Mật khẩu xác nhận không khớp.")
         .required("Vui lòng xác nhận mật khẩu của bạn."),
     lastName: yup.string().required("Tên của bạn là gì?"),
     firstName: yup.string().required("Họ của bạn là gì?"),
-    phone: yup
+    fullName: yup
+        .string()
+        .required("Họ và tên của bạn là gì?")
+        .min(6, "Họ và tên phải có ít nhất 6 ký tự"),
+    phoneNumber: yup
         .string()
         .required("Hãy nhập số điện thoại")
         .min(10, "Số điện thoại phải có 10 chữ số")
@@ -41,7 +44,7 @@ export const userSchema = yup.object({
         .nullable()
         .min(9, "Số CMND phải có 9 chữ số")
         .max(9, "Số CMND phải có 9 chữ số"),
-    birthday: yup.date(),
+    dateOfBirth: yup.date(),
     timeCreated: yup.date(),
 });
 
@@ -89,10 +92,10 @@ export type UserInfor = Pick<
     | "lastName"
     | "firstName"
     | "avatar"
-    | "phone"
+    | "phoneNumber"
     | "gender"
     | "role"
-    | "birthday"
+    | "dateOfBirth"
     | "timeCreated"
     | "address"
     | "cmnd"

@@ -30,7 +30,7 @@ const Footer = () => {
                             />
                             <img src={logo} className="w-[150px]"></img>
                         </h1>
-                        <p className="font-[Roboto] text-[17px] ">
+                        <p className="font-[Roboto] text-[17px] text-white ">
                             Your Ticket to Music Magic!.{" "}
                         </p>
                         <div className="flex pt-2 mt-4">
@@ -60,7 +60,7 @@ const Footer = () => {
                             </button>
                         </div>
                     </div>
-                    <div className="lg:w-1/4 md:w-1/2 pr-4 pl-4">
+                    <div className="lg:w-1/4 md:w-1/2 pr-4 pl-4 text-white">
                         <h5 className="text-[20px] text-white font-[Poppins,sans-serif] mb-5 font-bold">
                             Địa chỉ
                         </h5>
@@ -80,11 +80,11 @@ const Footer = () => {
                             info@example.com
                         </p>
                     </div>
-                    <div className="lg:w-1/4 md:w-1/2 pr-4 pl-4 flex flex-col">
+                    <div className="lg:w-1/4 md:w-1/2 pr-4 pl-4 flex flex-col text-white">
                         <h5 className="text-[20px] text-white font-[Poppins,sans-serif] mb-5 font-bold">
                             Truy cập nhanh
                         </h5>
-                        <button className="font-[Roboto] text-[17px] group flex gap-2 items-center ">
+                        <button className="font-[Roboto] text-[17px] group flex gap-2 items-center">
                             <FontAwesomeIcon
                                 icon={faAngleRight}
                                 className="h-3 w-3"
@@ -128,7 +128,7 @@ const Footer = () => {
                             <span className="btn btn-link mt-1">Hổ trợ</span>
                         </button>
                     </div>
-                    <div className="lg:w-1/4 md:w-1/2 pr-4 pl-4 ">
+                    <div className="lg:w-1/4 md:w-1/2 pr-4 pl-4 text-white">
                         <h5 className="text-[20px] text-white font-[Poppins,sans-serif] mb-5 font-bold">
                             Liên hệ
                         </h5>
@@ -158,8 +158,8 @@ const Footer = () => {
             <div className="mt-6 max-w-full mx-auto sm:px-4 copyright">
                 <div className="container mx-auto sm:px-4">
                     <div className="flex flex-wrap ">
-                        <div className="md:w-1/2 pr-4 pl-4 mb-3 md:mb-0">
-                            &copy; <a href="#">Health Insurance</a>, Bản quyền
+                        <div className="md:w-1/2 pr-4 pl-4 mb-3 md:mb-0 text-white">
+                            &copy; <a href="#">The Music Concert</a>, Bản quyền
                             đã được đăng ký.
                         </div>
                         <div className="md:w-1/2 pr-4 pl-4 text-center"></div>

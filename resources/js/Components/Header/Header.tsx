@@ -22,9 +22,31 @@ import {
     faMagnifyingGlass,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import path from "path";
+
+const headerPath = [
+    {
+        name: "Trang chủ",
+        path: "/",
+    },
+    {
+        name: "Sự kiện",
+        path: "/event",
+    },
+    {
+        name: "Hỗ trợ",
+        path: "/support",
+    },
+    {
+        name: "Liên hệ",
+        path: "/register",
+    },
+];
 
 function Header() {
     const [openNav, setOpenNav] = useState(false);
+
+    const currentPath = window.location.pathname;
     //   const { isAuthenticated, setIsAuthenticated, profile, setProfile } = useContext(AppContext)
 
     //   const { data: data } = useQuery({
@@ -70,6 +92,35 @@ function Header() {
                             </h1>
                         </div>
                     </Link>
+
+                    <nav className="flex justify-between relative flex-wrap items-center content-between py-3 px-4 bg-transparent text-black -ml-[200px]">
+                        <button
+                            type="button"
+                            className="py-1 px-2 text-md leading-normal bg-transparent border border-transparent rounded xl:hidden"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#navbarCollapse"
+                        >
+                            <span className="px-5 py-1 border border-gray-600 rounded "></span>
+                        </button>
+                        <div className="my-0" id="navbarCollapse">
+                            <div className="flex justify-center items-center gap-6 bg-blue-gray-100/30 rounded px-6 py-3 lg:py-[10px]">
+                                {headerPath.map((item, index) => (
+                                    <Link
+                                        href={item.path}
+                                        key={index}
+                                        className={` inline-block font-medium hover:text-primary ${
+                                            currentPath === item.path
+                                                ? "text-primary"
+                                                : "text-black"
+                                        } `}
+                                    >
+                                        {item.name}
+                                    </Link>
+                                ))}
+                            </div>
+                        </div>
+                    </nav>
+
                     <div className="flex items-center gap-4">
                         <div className="mr-4 hidden lg:block">
                             <HeaderNavList

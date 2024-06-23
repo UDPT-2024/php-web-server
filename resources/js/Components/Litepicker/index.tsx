@@ -16,7 +16,7 @@ interface MainProps {
     } & LitepickerConfig;
     value: string;
     onChange: (date: string) => void;
-    getRef: (el: LitepickerElement) => void;
+    getRef?: (el: LitepickerElement) => void;
 }
 
 export type LitepickerProps = MainProps &

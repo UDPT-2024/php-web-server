@@ -35,55 +35,53 @@ export const Register = () => {
     const [openPopoverPhone, setOpenPopoverPhone] = useState<boolean>(false);
     const [errorMsg, setErrorMsg] = useState<string>("");
 
-    // const signupMutation = useMutation({
-    //     mutationFn: (
-    //         body: Pick<
-    //             User,
-    //             | "email"
-    //             | "password"
-    //             | "lastName"
-    //             | "firstName"
-    //             | "confirmPassword"
-    //             | "phone"
-    //         >
-    //     ) => authApi.signUp(body),
-    //     onSuccess: (res, vars) => {
-    //         toast.success(res.data.message, { autoClose: 2000 });
-    //         // navigate("/confirm/" + encodeBase64(vars.email));
-    //         setIsLoginTab(true);
-    //     },
-    //     onError: (error) => {
-    //         if (isAxiosInternalServerError<ErrorResponse>(error)) {
-    //             const formError = error.response?.data;
-    //             if (formError) {
-    //                 toast.error(formError.message, { autoClose: 2000 });
-    //             }
-    //         }
-    //     },
-    // });
+    const signupMutation = useMutation({
+        mutationFn: (
+            body: Pick<
+                User,
+                | "email"
+                | "password"
+                | "lastName"
+                | "firstName"
+                | "passwordConfirmation"
+                | "phoneNumber"
+            >
+        ) => authApi.signUp(body),
+        onSuccess: (res, vars) => {
+            toast.success("Đăng ký thành công", { autoClose: 2000 });
+        },
+        onError: (error, vars) => {
+            toast.error(
+                "Đăng ký thất bại. Tài khoản " + vars.email + " đã tồn tại",
+                { autoClose: 2000 }
+            );
+        },
+    });
 
     const formik = useFormik({
         initialValues: {
-            email: "",
-            firstName: "",
-            lastName: "",
-            phone: "",
-            password: "",
-            confirmPassword: "",
+            // email: "",
+            // firstName: "",
+            // lastName: "",
+            // phoneNumber: "",
+            // password: "",
+            // passwordConfirmation: "",
+            kkk: "",
         },
         initialTouched: {
-            firstName: false,
-            lastName: false,
-            email: false,
-            password: false,
-            phone: false,
-            confirmPassword: false,
+            // firstName: false,
+            // lastName: false,
+            // email: false,
+            // password: false,
+            // phoneNumber: false,
+            // passwordConfirmation: false,
         },
         validationSchema: userSchema,
         onSubmit: async (data) => {
             // eslint-disable-next-line @typescript-eslint/no-unused-vars
-            const info = { ...data, birthday: date };
+            const info = { ...data, dateOfBirth: date };
             // await signupMutation.mutate(info);
+            console.log(info);
         },
     });
 
@@ -161,7 +159,7 @@ export const Register = () => {
                             setErrorMsg={setErrorMsg}
                             label="Số điện thoại"
                             id="my-phone"
-                            name="phone"
+                            name="phoneNumber"
                         />
                     </div>
 
@@ -187,7 +185,7 @@ export const Register = () => {
                         setErrorMsg={setErrorMsg}
                         label="Nhập lại mật khẩu"
                         id="my-confirm-password"
-                        name="confirmPassword"
+                        name="passwordConfirmation"
                     />
                 </form>
             </CardBody>

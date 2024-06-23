@@ -17,7 +17,7 @@ interface Picker extends Litepicker {
 }
 
 const getDateFormat = (format: string | undefined) => {
-    return format !== undefined ? format : "D MMM, YYYY";
+    return format !== undefined ? format : "DD/MM/YYYY";
 };
 
 const setValue = (props: LitepickerProps) => {

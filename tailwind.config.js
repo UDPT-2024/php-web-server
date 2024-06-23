@@ -2,6 +2,7 @@ import defaultTheme from 'tailwindcss/defaultTheme';
 import forms from '@tailwindcss/forms';
 import withMT from '@material-tailwind/react/utils/withMT';
 import plugin from 'tailwindcss/plugin';
+import colors from 'tailwindcss/colors';
 
 /** @type {import('tailwindcss').Config} */
 export default withMT({
@@ -31,6 +32,29 @@ export default withMT({
                 dark: "rgb(var(--color-dark) / <alpha-value>)",
                 textprimary: "rgb(var(--color-text-primary) / <alpha-value>)",
                 textgray: "rgb(var(--color-text-gray) / <alpha-value>)",
+                darkmode: {
+                    50: "rgb(var(--color-darkmode-50) / <alpha-value>)",
+                    100: "rgb(var(--color-darkmode-100) / <alpha-value>)",
+                    200: "rgb(var(--color-darkmode-200) / <alpha-value>)",
+                    300: "rgb(var(--color-darkmode-300) / <alpha-value>)",
+                    400: "rgb(var(--color-darkmode-400) / <alpha-value>)",
+                    500: "rgb(var(--color-darkmode-500) / <alpha-value>)",
+                    600: "rgb(var(--color-darkmode-600) / <alpha-value>)",
+                    700: "rgb(var(--color-darkmode-700) / <alpha-value>)",
+                    800: "rgb(var(--color-darkmode-800) / <alpha-value>)",
+                    900: "rgb(var(--color-darkmode-900) / <alpha-value>)",
+                }, slate: {
+                    50: colors.slate[50],
+                    100: colors.slate[100],
+                    200: colors.slate[200],
+                    300: colors.slate[300],
+                    400: colors.slate[400],
+                    500: colors.slate[500],
+                    600: colors.slate[600],
+                    700: colors.slate[700],
+                    800: colors.slate[800],
+                    900: colors.slate[900],
+                },
             },
             boxShadow: {
                 'custom': "#ffffff 0px 0px 0px 2px,#0866ff 0px 0px 0px 4px"
@@ -310,7 +334,7 @@ export default withMT({
             addBase({
                 // Default colors
                 ":root": {
-                    "--color-primary": '',
+                    "--color-primary": '255 107 0',
                     "--color-primary-dark": "26 54 149",
                     "--color-primary-gray": "228 230 235",
                     "--color-primary-light": "53 83 183",

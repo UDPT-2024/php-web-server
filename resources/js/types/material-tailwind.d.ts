@@ -72,5 +72,28 @@ declare module "@material-tailwind/react" {
         placeholder?: unknown;
     }
 
+    export interface BreadcrumbsProps extends EventCapture {
+        placeholder?: unknown;
+    }
+
+    export interface DialogBodyProps extends EventCapture {
+        placeholder?: unknown;
+    }
+
+    export interface DialogHeaderProps extends EventCapture {
+        placeholder?: unknown;
+    }
+
+    export interface DialogFooterProps extends EventCapture {
+        placeholder?: unknown;
+    }
+
+    export interface DialogProps extends EventCapture {
+        placeholder?: unknown;
+    }
+
+    export interface CheckboxProps extends EventCapture {
+        placeholder?: unknown;
+    }
     // more...
 }

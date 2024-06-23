@@ -42,21 +42,21 @@ export function isAxiosExpiredTokenError<FormError>(
     );
 }
 
-// Hàm định dạng ngày
-export const formatDate = (date: string) => {
-    const _date = new Date(date);
-    const options: Intl.DateTimeFormatOptions = {
-        day: "2-digit",
-        month: "2-digit",
-        year: "numeric",
-    };
-    const formattedDate = _date.toLocaleDateString("en-GB", options);
+// // Hàm định dạng ngày
+// export const formatDate = (date: string) => {
+//     const _date = new Date(date);
+//     const options: Intl.DateTimeFormatOptions = {
+//         day: "2-digit",
+//         month: "2-digit",
+//         year: "numeric",
+//     };
+//     const formattedDate = _date.toLocaleDateString("en-GB", options);
 
-    return formattedDate;
-};
+//     return formattedDate;
+// };
 
 // Hàm định dạng ngày giờ
-export const formatDateTime = (date: string) => {
+export const formatDate = (date: string) => {
     const now = new Date(date);
 
     const hours = now.getHours().toString().padStart(2, "0");
@@ -65,7 +65,7 @@ export const formatDateTime = (date: string) => {
     const month = (now.getMonth() + 1).toString().padStart(2, "0");
     const year = now.getFullYear();
 
-    return `${hours}:${minutes} ${day}/${month}/${year}`;
+    return `Ngày ${day} Tháng ${month} Năm ${year}`;
 };
 
 // Hàm định dạng số
@@ -136,3 +136,29 @@ export const calAge = (birthday: string) => {
 
     return age;
 };
+
+export function getDay(dateStr: string) {
+    const date = new Date(dateStr);
+    const day = date.getDate();
+    return day < 10 ? `0${day}` : day; // Trả về ngày dưới dạng 2 chữ số
+}
+
+export function getMonth(dateStr: string) {
+    const date = new Date(dateStr);
+    return date.getMonth() + 1; // Tháng bắt đầu từ 0 nên cần +1
+}
+
+export function getYear(dateStr: string) {
+    const date = new Date(dateStr);
+    return date.getFullYear();
+}
+
+export function getTime(dateString: string) {
+    const date = new Date(dateString);
+
+    const hours = date.getHours();
+    const minutes = date.getMinutes();
+    const hoursFormatted = hours < 10 ? `0${hours}` : hours; // Định dạng giờ thành 2 chữ số
+    const minutesFormatted = minutes < 10 ? `0${minutes}` : minutes; // Định dạng phút thành 2 chữ số
+    return `${hoursFormatted}:${minutesFormatted}`;
+}
